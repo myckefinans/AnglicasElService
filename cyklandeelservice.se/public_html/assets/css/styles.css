@@ -201,10 +201,12 @@ a {
     color: var(--color-ink);
     border-radius: var(--radius-pill);
     padding: var(--space-1) var(--space-2);
-    font-size: var(--size-step-1);
-    letter-spacing: 0.18em;
+    font-size: clamp(0.78rem, 0.7rem + 0.35vw, 0.95rem);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+    display: inline-block;
     width: fit-content;
+    white-space: nowrap;
     text-shadow: none;
 }
 
@@ -275,7 +277,7 @@ h2 {
     }
 
     .panel-about {
-        background-position: center center;
+        background-position: 0% center;
         background-attachment: scroll;
     }
 
@@ -309,5 +311,11 @@ h2 {
 
     .about-half--text .hero-block {
         width: 100%;
+    }
+
+    .eyebrow.bg-picture {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
     }
 }
