@@ -122,10 +122,35 @@ a {
     display: flex;
     align-items: center;
     padding: var(--space-6) var(--space-3);
+    scroll-margin-top: var(--header-height);
 }
 
 .panel-about {
-    background: linear-gradient(135deg, var(--color-about), #f4c2a3);
+    position: relative;
+    background-image: url('../images/bgpicture.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: var(--color-about);
+    overflow: hidden;
+}
+
+.about-halves {
+    display: flex;
+    width: min(100%, var(--content-width));
+    margin: 0 auto;
+    padding: 0 var(--space-3);
+}
+
+.about-half {
+    flex: 1;
+}
+
+.about-half--text {
+    display: flex;
+    align-items: center;
+    padding: 0 0 var(--space-6) var(--space-4);
+    color: #ffffff;
 }
 
 .panel-job {
@@ -147,7 +172,7 @@ a {
 
 .hero-block {
     display: grid;
-    gap: var(--space-3);
+    gap: var(--space-2);
 }
 
 .two-column {
@@ -157,11 +182,30 @@ a {
     align-items: start;
 }
 
+.shadow-text {
+    text-shadow:
+        0 1px 2px rgb(0 0 0 / 95%),
+        0 3px 8px rgb(0 0 0 / 50%);
+}
+
 .eyebrow {
-    margin-bottom: var(--space-2);
-    font-size: 0.9rem;
+    font-size: var(--size-step-1);
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    width: fit-content;
+    text-shadow: none;
+}
+
+.eyebrow.bg-picture {
+    background: var(--color-job);
+    color: var(--color-ink);
+    border-radius: var(--radius-pill);
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--size-step-1);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    width: fit-content;
+    text-shadow: none;
 }
 
 h1,
@@ -212,6 +256,12 @@ h2 {
 
     .site-nav {
         width: 100%;
+        gap: var(--space-1);
+    }
+
+    .site-nav a {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.75rem;
     }
 
     .two-column {
@@ -222,5 +272,42 @@ h2 {
     .panel {
         min-height: 0;
         padding: var(--space-5) var(--space-2);
+    }
+
+    .panel-about {
+        background-position: center center;
+        background-attachment: scroll;
+    }
+
+    .panel-about::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgb(18 32 41 / 26%);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .about-halves {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: min(100%, var(--content-width));
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .about-half--empty {
+        display: none;
+    }
+
+    .about-half--text {
+        padding: 0;
+    }
+
+    .about-half--text .hero-block {
+        width: 100%;
     }
 }
