@@ -129,7 +129,7 @@ a {
     position: relative;
     background-image: url('../images/bgpicture.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: 34% center;
     background-attachment: fixed;
     background-color: var(--color-about);
     overflow: hidden;
@@ -137,20 +137,26 @@ a {
 
 .about-halves {
     display: flex;
+    justify-content: flex-end;
     width: min(100%, var(--content-width));
     margin: 0 auto;
     padding: 0 var(--space-3);
 }
 
 .about-half {
-    flex: 1;
+    flex: 0 1 50%;
 }
 
 .about-half--text {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     padding: 0 0 var(--space-6) var(--space-4);
     color: #ffffff;
+}
+
+.about-mobile-image {
+    display: none;
 }
 
 .panel-job {
@@ -277,45 +283,60 @@ h2 {
     }
 
     .panel-about {
-        background-position: 0% center;
-        background-attachment: scroll;
-    }
-
-    .panel-about::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgb(18 32 41 / 26%);
-        -webkit-backdrop-filter: blur(2px);
-        backdrop-filter: blur(2px);
-        z-index: 0;
-        pointer-events: none;
+        background-image: none;
+        background-color: var(--color-about);
     }
 
     .about-halves {
-        position: relative;
-        z-index: 1;
-        display: block;
+        display: grid;
+        justify-content: flex-start;
+        gap: var(--space-3);
         width: min(100%, var(--content-width));
         margin: 0 auto;
         padding: 0;
     }
 
-    .about-half--empty {
-        display: none;
-    }
-
     .about-half--text {
         padding: 0;
+        justify-content: flex-start;
+        color: var(--color-ink);
     }
 
     .about-half--text .hero-block {
         width: 100%;
+        gap: 0;
+    }
+
+    .about-half--text .shadow-text {
+        text-shadow: none;
+    }
+
+    .about-half--text h1 {
+        max-width: 12ch;
+        font-size: var(--size-step-2);
+    }
+
+    .about-mobile-image {
+        display: block;
+        min-height: 18rem;
+        border-radius: var(--radius-soft);
+        background-image: url('../images/bgpicture.jpg');
+        background-size: cover;
+        background-position: 0% bottom;
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 28%),
+            inset 0 -2.5rem 3.5rem rgb(18 32 41 / 24%),
+            inset 0 0 0 1px rgb(18 32 41 / 12%);
     }
 
     .eyebrow.bg-picture {
-        padding: 0.45rem 0.85rem;
-        font-size: 0.72rem;
-        letter-spacing: 0.1em;
+        background: none;
+        color: inherit;
+        border-radius: 0;
+        padding: 0;
+        font-size: var(--size-step-1);
+        letter-spacing: 0.18em;
+        display: block;
+        white-space: normal;
     }
 }
